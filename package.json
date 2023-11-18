@@ -15,7 +15,10 @@
     "build:dev": "tsc -w",
     "test": "mocha -w -r ts-node/register src/**/*.test.ts",
     "format": "prettier --write \"**/*.ts\"",
-    "lint": "eslint './src/'"
+    "lint": "eslint './src/'",
+    "postinstall": "npx patch-package",
+    "build-docker": "docker build -t mojaik_explorer:1.0.0 .",
+    "deploy-docker": "docker-compose up -d"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.6.1",

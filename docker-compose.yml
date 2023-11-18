@@ -1,0 +1,12 @@
+version: "3"
+services: 
+  mojaik:
+    image: mojaik_explorer:1.0.0
+    restart: always
+    container_name: mojaik_container
+    ports:
+      - "8000:8000"
+      - "3002:3002"
+      - "3001:3001"
+    extra_hosts:
+      - host.docker.internal:host-gateway
