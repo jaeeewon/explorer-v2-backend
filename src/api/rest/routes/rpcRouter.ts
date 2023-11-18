@@ -7,7 +7,7 @@ export const rpcRouter = Router({mergeParams: true})
 
 enum RPCMethod {
   ethGetLogs = 'eth_getLogs',
-  hmyGetLogs = 'hmy_getLogs',
+  hmyGetLogs = 'fch_getLogs',
 }
 
 enum RPCErrorCode {

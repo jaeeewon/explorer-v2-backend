@@ -11,7 +11,7 @@ export async function getGasPrice() {
   return await withCache(
     ['getGasPrice', arguments],
     async () => {
-      const data = await transport(0, 'hmy_gasPrice', [])
+      const data = await transport(0, 'fch_gasPrice', [])
       return data
     },
     1000 * 60

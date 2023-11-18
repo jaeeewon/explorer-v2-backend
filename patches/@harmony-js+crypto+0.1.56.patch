@@ -1,0 +1,15 @@
+diff --git a/node_modules/@harmony-js/crypto/dist/bech32.js b/node_modules/@harmony-js/crypto/dist/bech32.js
+index 83f801f..dbfd0d5 100644
+--- a/node_modules/@harmony-js/crypto/dist/bech32.js
++++ b/node_modules/@harmony-js/crypto/dist/bech32.js
+@@ -120,8 +120,8 @@ exports.bech32Decode = function (bechString) {
+     return { hrp: hrp, data: Buffer.from(data.slice(0, data.length - 6)) };
+ };
+ // HRP is the human-readable part of Harmony bech32 addresses
+-exports.HRP = 'one';
+-exports.tHRP = 'tone';
++exports.HRP = 'fee';
++exports.tHRP = 'tfee';
+ /**
+  * convertBits
+  *

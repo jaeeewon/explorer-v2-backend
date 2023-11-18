@@ -19,12 +19,13 @@
     }
   ],
   "rules": {
+    "linebreak-style": 0,
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/camelcase": [0],
     "object-curly-newline": "off",
     "jsx-a11y/media-has-caption": "off",
     "no-underscore-dangle": "off",
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", {"endOfLine": "auto"}],
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "import/extensions": "off",

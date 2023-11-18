@@ -101,6 +101,7 @@ const fetchWithoutRetry = (
       })
       */
 
+      console.log('payload:', payload)
       throw new Error(err)
     })
     .finally(() => {

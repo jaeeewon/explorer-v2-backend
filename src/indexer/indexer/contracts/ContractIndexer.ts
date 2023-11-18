@@ -554,6 +554,7 @@ export class ContractIndexer {
     const delta = blockTo - blockFrom
 
     if (firstIteration) {
+      // this.l.info(JSON.stringify({bto: [blockFrom + blocksRange - 1, blocksHeightLimit]}, null, 2))
       this.l.info(`Start blocks range [${blockFrom}, ${blockTo}]`)
     }
 

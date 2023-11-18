@@ -35,8 +35,9 @@ export class PostgresStorageIndexer implements IStorageIndexer {
       `select last_synced_block_number from indexer_state where indexer_name='blocks';`,
       []
     )
-    const lastIndexedBlock = +res[0][`last_synced_block_number`]
-    return lastIndexedBlock || 0
+    // console.log('getLastIndexedBlockNumber', res)
+    const lastIndexedBlock = +res[0]?.[`last_synced_block_number`]
+    return lastIndexedBlock || 1
   }
 
   setLastIndexedBlockNumber = async (num: BlockNumber): Promise<number> => {
@@ -52,8 +53,8 @@ export class PostgresStorageIndexer implements IStorageIndexer {
       []
     )
 
-    const lastIndexedBlock = +res[0][`last_synced_block_number`]
-    return lastIndexedBlock || 0
+    const lastIndexedBlock = +res[0]?.[`last_synced_block_number`]
+    return lastIndexedBlock || 1
   }
 
   setLastIndexedLogsBlockNumber = async (num: BlockNumber): Promise<number> => {
@@ -69,8 +70,8 @@ export class PostgresStorageIndexer implements IStorageIndexer {
       [name]
     )
 
-    const lastIndexedBlock = +res[0][`last_synced_block_number`]
-    return lastIndexedBlock || 0
+    const lastIndexedBlock = +res[0]?.[`last_synced_block_number`]
+    return lastIndexedBlock || 1
   }
 
   setLastIndexedBlockNumberByName = async (name: string, num: BlockNumber): Promise<number> => {

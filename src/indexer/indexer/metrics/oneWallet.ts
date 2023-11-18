@@ -6,7 +6,7 @@ import nodeFetch from 'node-fetch'
 const l = logger(module)
 const interval = 1000 * 60 * 60
 
-const RPCURL = 'https://api.s0.t.hmny.io'
+const RPCURL = 'https://api.s0.asadal.timestope.net'
 
 export const oneWalletIndexer = () => {
   l.info('One wallet balances indexer starting...')
@@ -17,7 +17,7 @@ const fetchAddressBalance = async (address: Address, retries = 5): Promise<strin
   const body = {
     jsonrpc: '2.0',
     id: 1,
-    method: 'hmy_getBalance',
+    method: 'fch_getBalance',
     params: [address, 'latest'],
   }
 

@@ -132,7 +132,7 @@ create table if not exists staking_transactions
     v                 text,
     msg               jsonb,
     type              staking_transaction_type,
-    /* amount from msg.amount or if type=CollectRewards from hmyv2_getTransactionReceipt tx.logs[0].data */
+    /* amount from msg.amount or if type=CollectRewards from fchv2_getTransactionReceipt tx.logs[0].data */
     amount            numeric
 );
 

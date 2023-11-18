@@ -22,7 +22,7 @@ export const mapBlockFromResponse = (block: RPCBlockHarmony): Block => {
   --header 'Content-Type: application/json' \
   --data-raw '{
   "jsonrpc": "2.0",
-    "method": "hmy_getBlockByNumber",
+    "method": "fch_getBlockByNumber",
     "id": 1,
     "params": [0, false]
   }'
@@ -54,7 +54,7 @@ const mapTransaction = (tx: RPCTransactionHarmony) => {
 
 const mapStakingTransaction = (tx: RPCStakingTransactionHarmony) => {
   // convert one1 to 0x
-  // https://docs.harmony.one/home/developers/api/methods/transaction-related-methods/hmy_getstakingtransactionbyblockhashandindex
+  // https://docs.harmony.one/home/developers/api/methods/transaction-related-methods/fch_getstakingtransactionbyblockhashandindex
   const msg = {...tx.msg}
   if (msg.validatorAddress) {
     msg.validatorAddress = normalizeAddress(msg.validatorAddress)

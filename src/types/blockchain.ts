@@ -8,15 +8,15 @@ export type RPCETHMethod =
   | 'eth_getCode'
 
 export type RPCHarmonyMethod =
-  | 'hmy_getBlockByNumber'
-  | 'hmy_getTransactionByHash'
-  | 'hmy_getBlocks'
-  | 'hmy_call'
+  | 'fch_getBlockByNumber'
+  | 'fch_getTransactionByHash'
+  | 'fch_getBlocks'
+  | 'fch_call'
   | 'debug_traceTransaction'
-  | 'hmyv2_getTransactionReceipt'
-  | 'hmy_getBalance'
-  | 'hmyv2_getTransactionsCount'
-  | 'hmy_gasPrice'
+  | 'fchv2_getTransactionReceipt'
+  | 'fch_getBalance'
+  | 'fchv2_getTransactionsCount'
+  | 'fch_gasPrice'
 
 export type ShardID = 0 | 1 | 2 | 3
 

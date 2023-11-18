@@ -35,7 +35,7 @@ export const getBlocks = (
     // disable including staking txs for main net before 3358745 where implemented
     inclStaking: config.indexer.chainID === mainnetChainID && +to >= 3358745 ? inclStaking : false,
   }
-  return transport(shardID, 'hmy_getBlocks', [from, to, o]).then((blocks) =>
+  return transport(shardID, 'fch_getBlocks', [from, to, o]).then((blocks) =>
     blocks.map(mapBlockFromResponse)
   )
 }
@@ -72,7 +72,7 @@ export const getLogs = (
 }
 
 export const getBalance = (shardID: ShardID, address: Address): Promise<string> => {
-  return transport(shardID, 'hmy_getBalance', [address, 'latest'])
+  return transport(shardID, 'fch_getBalance', [address, 'latest'])
 }
 
 type transactionCountType = 'ALL' | 'RECEIVED' | 'SENT'
@@ -81,14 +81,14 @@ export const getTransactionCount = (
   address: Address,
   type: transactionCountType = 'ALL'
 ): Promise<TransactionReceipt> => {
-  return transport(shardID, 'hmyv2_getTransactionsCount', [address, type])
+  return transport(shardID, 'fchv2_getTransactionsCount', [address, type])
 }
 
 export const getTransactionReceipt = (
   shardID: ShardID,
   hash: TransactionHash
 ): Promise<TransactionReceipt> => {
-  return transport(shardID, 'hmyv2_getTransactionReceipt', [hash])
+  return transport(shardID, 'fchv2_getTransactionReceipt', [hash])
 }
 
 export const getTransactionTrace = (
@@ -142,5 +142,5 @@ export const call = (
   params: Call,
   blockNumber: BlockNumber | 'latest' | 'earliest' | 'pending' = 'latest'
 ): Promise<ByteCode> => {
-  return transport(shardID, 'hmy_call', [params, blockNumber])
+  return transport(shardID, 'fch_call', [params, blockNumber])
 }

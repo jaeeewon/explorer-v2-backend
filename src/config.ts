@@ -44,7 +44,7 @@ const getCommaSeparatedList = (list: string | undefined): string[] =>
 
 const getChainID = (v: any): number => {
   if (v === 'mainnet') {
-    return 1666600000
+    return 1682841000
   }
   return +v
 }
