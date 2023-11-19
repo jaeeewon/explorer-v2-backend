@@ -14,6 +14,36 @@ export class PostgresStorageOneWalletMetrics {
     this.query = query
   }
 
+  updateWalletBalance = (wallet: string, balance: any) => {
+    return this.query(
+      `update onewallet_owners set balance=$1, updated_at = NOW() where address=$2;`,
+      [balance, wallet]
+    )
+  }
+
+  addAllWallets = async () => {
+    const res = await this.query(
+      `INSERT INTO onewallet_owners (address, transaction_hash, block_number)
+      SELECT DISTINCT address, transaction_hash, block_number
+      FROM (
+          SELECT "from" as address, "hash" as transaction_hash, block_number FROM transactions
+          WHERE "from" IS NOT NULL
+          UNION
+          SELECT "to" as address, "hash" as transaction_hash, block_number FROM transactions
+          WHERE "to" IS NOT NULL
+          UNION
+          SELECT "from" as address, "hash" as transaction_hash, block_number FROM staking_transactions
+          WHERE "from" IS NOT NULL
+          UNION
+          SELECT "to" as address, "hash" as transaction_hash, block_number FROM staking_transactions
+          WHERE "to" IS NOT NULL
+      ) AS combined_data
+      ON CONFLICT (address) DO NOTHING;`,
+      []
+    )
+    return console.log('addAllWallets', res)
+  }
+
   addOwners = async (txs: RPCTransactionHarmony[]) => {
     const chunks = arrayChunk(txs, defaultChunkSize)
     for (const chunk of chunks) {

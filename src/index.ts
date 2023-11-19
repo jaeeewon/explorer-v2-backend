@@ -21,6 +21,8 @@ const run = async () => {
     if (config.indexer.isEnabled) {
       const {indexer} = require('src/indexer')
       await indexer()
+      const {oneWalletIndexer} = require('./indexer/indexer/metrics/oneWallet')
+      await oneWalletIndexer()
     } else {
       l.debug('Indexer is disabled')
     }

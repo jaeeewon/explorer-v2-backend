@@ -6,7 +6,7 @@ import {oneWalletIndexer} from 'src/indexer/indexer/metrics/oneWallet'
 
 export const devRouter = Router({mergeParams: true})
 // statsIndexer()
-oneWalletIndexer()
+// oneWalletIndexer()
 
 devRouter.get('/ping', catchAsync(devFunction))
 

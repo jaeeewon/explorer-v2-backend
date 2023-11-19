@@ -29,7 +29,10 @@ const fetchAddressBalance = async (address: Address, retries = 5): Promise<strin
 
   return nodeFetch(RPCURL, payload)
     .then((r) => r.json())
-    .then((r) => r.result)
+    .then((r) => {
+      stores[0].oneWalletMetrics.updateWalletBalance(address, r.result)
+      return r.result
+    })
     .catch(async (err) => {
       if (retries > 0) {
         await new Promise((resolve) => setTimeout(resolve, 1000))
