@@ -175,6 +175,7 @@ export class BlockIndexer {
           })
 
           await store.transaction.addTransactions(blockTxs)
+          await store.oneWalletMetrics.addOwners(blockTxs)
         }
       }
 

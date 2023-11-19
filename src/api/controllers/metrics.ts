@@ -46,7 +46,7 @@ export async function getMetricsByType(
 export async function getTopMetricsByType(type: MetricsTopType, period = 1): Promise<any | null> {
   validator({
     type: isOneOf(type, [...Object.values(MetricsTopType)]),
-    period: isOneOf(period, [1, 3, 7]),
+    period: isOneOf(period, [1, 3, 7, 31, 92, 183, 365]),
   })
   return await withCache(
     ['getTopMetricsByType', arguments],

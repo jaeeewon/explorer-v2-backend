@@ -7,6 +7,7 @@ import cors from 'cors'
 import {Request, Response} from 'express'
 import rateLimit from 'express-rate-limit'
 import {logger} from 'src/logger'
+import {devRouter} from 'src/api/rest/routes/dev'
 import {blockRouter} from 'src/api/rest/routes/block'
 import {transactionRouter} from 'src/api/rest/routes/transaction'
 import {stakingTransactionRouter} from 'src/api/rest/routes/stakingTransaction'
@@ -54,6 +55,8 @@ export const RESTServer = async () => {
   } else {
     l.info(`REST API rate limiter is disabled in config [API_RATE_LIMITER_IS_ENABLED]`)
   }
+
+  api.use('/dev', devRouter)
 
   const mainRouter0 = Router({mergeParams: true})
   mainRouter0.use('/block', blockRouter)

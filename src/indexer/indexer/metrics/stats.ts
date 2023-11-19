@@ -33,7 +33,7 @@ const runLoop = async () => {
 }
 
 const updateTopDailyMetrics = async () => {
-  const periods = [1, 3, 7] // Top metrics for each 1, 3, 7 last days period
+  const periods = [1, 3, 7, 31, 62, 183, 365] // Top metrics for each 1, 3, 7 last days period
   for (let i = 0; i < periods.length; i++) {
     const period = periods[i]
     await stores[0].metrics.updateTopOne(MetricsTopType.topOneSender, period)

@@ -3,6 +3,16 @@ import {Query} from 'src/store/postgres/types'
 import {MetricsDailyType, MetricsTopType} from 'src/types'
 import {fromSnakeToCamelResponse} from 'src/store/postgres/queryMapper'
 
+const sysWlt = {
+  frc20_xTime: '0xe757b94314d35886e673fa7de1bd25ddba740a71',
+  xtime_tokenizing_sender: '0x4466030bbe7e582591b31dda12183de36bd8ac32',
+  habros_multi_sender: '0xdadc74211e002417146ca3af731bad45d8915d11',
+}
+
+const systemWallets = Object.values(sysWlt)
+  .map((v) => `'${v}'`)
+  .join(`, `)
+// and "${columnName}" not in (${systemWallets})
 export class PostgresStorageMetrics implements IStorageMetrics {
   query: Query
 

@@ -1,5 +1,6 @@
 import {Query} from 'src/store/postgres/types'
-import {Address} from 'src/types'
+import {Address, RPCTransactionHarmony} from 'src/types'
+import {arrayChunk, defaultChunkSize} from 'src/utils/arrayChunk'
 
 const oneWalletAddresses = [
   '0xc8cd0c9ca68b853f73917c36e9276770a8d8e4e0',
@@ -11,6 +12,18 @@ export class PostgresStorageOneWalletMetrics {
 
   constructor(query: Query) {
     this.query = query
+  }
+
+  addOwners = async (txs: RPCTransactionHarmony[]) => {
+    const chunks = arrayChunk(txs, defaultChunkSize)
+    for (const chunk of chunks) {
+      await Promise.all(
+        chunk.map((tx: any) => {
+          this.addOwner(tx.from, tx.hash, tx.blockNumber)
+          this.addOwner(tx.to, tx.hash, tx.blockNumber)
+        })
+      )
+    }
   }
 
   addOwner = (address: string, txHash: string, blockNumber: number) => {
