@@ -6,7 +6,7 @@ import nodeFetch from 'node-fetch'
 const l = logger(module)
 const interval = 1000 * 60 * 60
 
-const RPCURL = 'https://api.s0.asadal.timestope.net'
+const RPCURL = 'https://rpc.s0.babylon.mojaik.com'
 
 export const oneWalletIndexer = () => {
   l.info('One wallet balances indexer starting...')

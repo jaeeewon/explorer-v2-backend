@@ -446,7 +446,9 @@ create table if not exists onewallet_owners
 (
     address             char(42) not null primary key,
     transaction_hash    char(66) not null,
-    block_number        bigint not null
+    block_number        bigint not null,
+    balance             numeric default (0),
+    updated_at          timestamp not null default now()
 );
 
 create table if not exists onewallet_metrics
