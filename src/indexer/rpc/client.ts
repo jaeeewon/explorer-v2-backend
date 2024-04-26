@@ -33,7 +33,7 @@ export const getBlocks = (
     fullTx,
     withSigners,
     // disable including staking txs for main net before 3358745 where implemented
-    inclStaking: config.indexer.chainID === mainnetChainID && +to >= 3358745 ? inclStaking : false,
+    inclStaking // : config.indexer.chainID === mainnetChainID && +to >= 3358745 ? inclStaking : false,
   }
   return transport(shardID, 'fch_getBlocks', [from, to, o]).then((blocks) =>
     blocks.map(mapBlockFromResponse)
